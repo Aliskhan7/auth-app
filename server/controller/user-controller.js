@@ -36,7 +36,8 @@ class UserController {
   }
   async getUsers(req, res, next){
     try{
-      res.json(['33223','2323'])
+
+
     }catch (e) {
       console.log(e);
     }
