@@ -74,6 +74,10 @@ class UserService{
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return {...tokens, user: userDto}
   }
+  async geAllUsers() {
+    const users = await UserModel.find()
+    return users
+  }
 }
 
 module.exports = new UserService()
