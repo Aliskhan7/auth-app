@@ -7,23 +7,31 @@ const LoginForm: FC = () => {
   const [password, setPassword] = useState<string>("");
   const { store } = useContext(Context);
   return (
-    <div>
-      <input
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-        type="text"
-        placeholder="Email"
-      />
-      <input
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-        type="password"
-        placeholder="Password"
-      />
-      <button onClick={() => store.login(email, password)}>Login</button>
-      <button onClick={() => store.registration(email, password)}>
-        Registration
-      </button>
+    <div className="content">
+      <div className="form form-block">
+        <h2 className="form-block_title">Войти</h2>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          type="text"
+          placeholder="Email"
+        />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          type="password"
+          placeholder="Password"
+        />
+        <button className="btn" onClick={() => store.login(email, password)}>
+          Войти
+        </button>
+        <p className="form-block_link">
+          Нет аккаунта?{" "}
+          <span onClick={() => store.registration(email, password)}>
+            Зарегистрироваться
+          </span>
+        </p>
+      </div>
     </div>
   );
 };

@@ -28,22 +28,30 @@ function App() {
     return <div>Загрузка...</div>;
   }
 
-  if (!store.isAuth) {
+  if (store.isAuth) {
     return <LoginForm />;
   }
 
   return (
-    <div className="App">
-      <h1>{store.isAuth ? "Пользователь авторизован" : "Авторизуйтесь"}</h1>
-      <h2>
-        {store.user.isActivated ? "Аккаунт подтвержден" : "Активируйте аккаунт"}
-      </h2>
-      <button onClick={() => store.logout()}>Выйти</button>
-      <div>
-        <button onClick={getUsers}>Получить пользователей</button>
-        {users.map((user) => {
-          return <div key={user.email}>{user.email}</div>;
-        })}
+    <div className="content">
+      <div className="block-auth">
+        <h1>{store.isAuth ? "Пользователь авторизован" : "Авторизуйтесь"}</h1>
+        <h2>
+          {store.user.isActivated
+            ? "Аккаунт подтвержден"
+            : "Активируйте аккаунт"}
+        </h2>
+        <button className="btn btn-logout" onClick={() => store.logout()}>
+          Выйти
+        </button>
+        <div>
+          <button className="btn" onClick={getUsers}>
+            Получить пользователей
+          </button>
+          {users.map((user) => {
+            return <div key={user.email}>{user.email}</div>;
+          })}
+        </div>
       </div>
     </div>
   );
